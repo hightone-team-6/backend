@@ -4,6 +4,7 @@ import { ReservationModule } from './reservation/reservation.module';
 import { LocationModule } from './location/location.module';
 
 @Module({
-    imports: [TemplateModule, ReservationModule, LocationModule]
+    imports: [TemplateModule, ReservationModule, LocationModule],
+    controllers: []
 })
 export class AppModule {}
