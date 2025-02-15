@@ -20,6 +20,7 @@ export class ReservationController {
             request: { type: 'string' },
             name: { type: 'string' },
             tel: { type: 'string' },
+            month: { type: 'number'},
             reservationDates: { type: 'array',
                 items: { type: 'number' } }
           },

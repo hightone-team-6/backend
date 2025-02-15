@@ -4,5 +4,6 @@ interface Reservation {
     request: string
     name: string
     tel: string
+    month: number
     reservationDates: number[]
 }
