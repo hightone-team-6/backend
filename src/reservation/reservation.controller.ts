@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { ApiOperation, ApiResponse, ApiTags, ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { FormDataRequest } from 'nestjs-form-data';
@@ -32,5 +32,10 @@ export class ReservationController {
             status: 200,
             content: res
         }
+    }
+
+    @Get()
+    async getReservation() {
+        return this.reservationService.templates;
     }
 }
