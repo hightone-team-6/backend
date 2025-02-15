@@ -17,7 +17,7 @@ async function bootstrap() {
     SwaggerModule.setup('docs', app, document);
 
     const port = process.env.SERVER_PORT ?? 3000
-    await app.listen(port).then(() => {
+    await app.listen(port, '0.0.0.0').then(() => {
         console.log(`http://localhost:${port}`)
     }).catch(() => {
         console.log('An error has occurred while trying to process this task.')
