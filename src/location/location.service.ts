@@ -1,7 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { Location } from "./location.interface";
+import { DatabaseService } from "src/utils/database.service";
 @Injectable()
 export class LocationService {
+    constructor(private readonly databaseService: DatabaseService) {}
     locations: Location[] = [
         {
           imageUrls: Array(4).fill(
@@ -91,6 +93,6 @@ export class LocationService {
     ]
     
     getLocations() {
-      return this.locations;
+        return this.locations;
     }
 }
