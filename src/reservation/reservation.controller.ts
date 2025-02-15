@@ -1,7 +1,8 @@
 import { Body, Controller, Get, Post, Query, UseInterceptors } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { ApiOperation, ApiResponse, ApiTags, ApiBody, ApiConsumes } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { FormDataRequest } from 'nestjs-form-data';
 
 @ApiTags('reservations')
 @Controller('reservations')
@@ -21,8 +22,7 @@ export class ReservationController {
           },
         }, 
     })
-    @ApiConsumes('multipart/form-data')
-    @UseInterceptors(FileInterceptor('file'))
+    @FormDataRequest()
     async reservationlocation(@Body() body: Reservation) {
         const res = await this.reservationService.patchReservations(body)
         console.log(res)
