@@ -23,6 +23,9 @@ export class ReservationController {
     async reservationlocation(@Body() body: Reservation) {
         const res = await this.reservationService.patchReservations(body)
         console.log(res)
-        return { content: "succeed" }
+        return { 
+            status: 200,
+            content: "succeed" 
+        }
     }
 }
