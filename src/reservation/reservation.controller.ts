@@ -19,7 +19,7 @@ export class ReservationController {
             file: { type: 'string', format: 'binary' },
             description: { type: 'string' }
           },
-        },
+        }, 
     })
     @ApiConsumes('multipart/form-data')
     @UseInterceptors(FileInterceptor('file'))
