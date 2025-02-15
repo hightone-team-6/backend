@@ -4,7 +4,7 @@ export class ReservationService {
     private templates: Reservation[] = [];
     
     async patchReservations(body: Reservation) {
-        this.templates.push(body)
+        await this.templates.push(body)
         return this.templates
     }
 }
