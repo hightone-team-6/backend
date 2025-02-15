@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post, Query, Search } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { LocationService } from './location.service';
-import { ApiBody, ApiOperation, ApiProperty, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('locations')
 @Controller('locations')
@@ -14,9 +14,8 @@ export class LocationController {
     @ApiQuery({ name: 'search', required: false }) 
     async search(@Query('search') searchParam?: string) {
         const search = searchParam
-        console.log(search)
         if (search) {
-            return this.locationService.locations.filter(l => 
+            return (await this.locationService.getLocations()).filter((l) => 
                 (l.title.includes(search) || l.hashTags.some(tag => tag.includes(search))) || (l.description.includes(search))
             );
         }

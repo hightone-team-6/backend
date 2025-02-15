@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Query, Search } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { TemplateService } from './template.service';
-import { ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('templates')
 @Controller('templates')
@@ -14,7 +14,6 @@ export class TemplateController {
     @ApiQuery({ name: 'search', required: false }) 
     async search(@Query('search') searchParam?: string) {
         const search = searchParam
-        console.log(search)
         if (search) {
             return this.templateService.templates.filter(t => 
                 (t.title.includes(search) || t.tags.some(tag => tag.includes(search)))

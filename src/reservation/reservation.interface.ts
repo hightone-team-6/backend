@@ -1,5 +1,8 @@
 interface Reservation {
     locationId: number
-    file: File
-    description: string
+    files: File[]
+    request: string
+    name: string
+    tel: string
+    reservationDates: number[]
 }

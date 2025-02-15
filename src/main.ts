@@ -2,11 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { config } from 'dotenv';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { Logger } from '@nestjs/common'
+const logger = new Logger('Backend');
 config();
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, { cors: true });
-
     const config = new DocumentBuilder()
     .setTitle('highthon-6 back-end api')
     .setDescription('An api')
@@ -18,9 +19,9 @@ async function bootstrap() {
 
     const port = process.env.SERVER_PORT ?? 3000
     await app.listen(port, '0.0.0.0').then(() => {
-        console.log(`http://localhost:${port}`)
+        logger.log(`http://localhost:${port}`)
     }).catch(() => {
-        console.log('An error has occurred while trying to process this task.')
+        logger.log('An error has occurred while trying to process this task.')
     });
 }
 bootstrap();
