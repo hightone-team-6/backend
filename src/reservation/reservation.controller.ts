@@ -30,7 +30,7 @@ export class ReservationController {
         const res = await this.reservationService.patchReservations(body)
         return { 
             status: 200,
-            content: "succeed" 
+            content: res
         }
     }
 }
