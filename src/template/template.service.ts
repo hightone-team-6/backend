@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Template } from './template.interface';
 @Injectable()
 export class TemplateService {
-    private readonly templates: Template[] = [
+    templates: Template[] = [
       {
         imageUrls: ['http://example.com/image1.jpg', 'http://example.com/image2.jpg'],
         title: 'Template 1',
